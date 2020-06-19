@@ -13,6 +13,8 @@ fields:
   label: Hero title
   config:
     wysiwyg: true
+    schema:
+      format: markdown
   schema:
     format: html
 - type: textarea
@@ -20,6 +22,8 @@ fields:
   label: Hero subtitle
   config:
     wysiwyg: true
+    schema:
+      format: markdown
   schema:
     format: html
 - name: footer
