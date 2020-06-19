@@ -4,15 +4,14 @@
             <div class="left">
                 <g-link :to="{ name: 'home' }" class="home-link">
                     <img 
-                        src="../../static/logo.svg"
+                        src="../../static/logo.png"
                         :alt="settings.site_name" 
                         class="logo"
                     />
                 </g-link>
             </div>
             <nav class="nav right">
-                <g-link class="nav__link" to="/journal">Journal</g-link>
-                <g-link class="nav__link" to="/contact">Say Hi!</g-link>
+                <g-link class="nav__link" to="https://drive.google.com/file/d/1ofCriSzyvJxrIyNWgpyUnEsVcvKHoUbu/view?usp=sharing">Resume</g-link>
             </nav>
         </div>
     </header>
@@ -51,7 +50,7 @@ export default {
     text-decoration: none;
 }
 .logo {
-    height: 1.5rem;
+    height: 2.5rem;
 }
 .site-name {
     font-size: 0.9rem;
