@@ -1,12 +1,16 @@
 <template>
-  <div class="Resume"/>
+  <div/>
 </template>
 
 <script>
 export default {
-  name: 'Resume',
   created() {
-    location.replace('https://drive.google.com/file/d/1ofCriSzyvJxrIyNWgpyUnEsVcvKHoUbu/view?usp=sharing');
+    if (process.isClient) {
+      location.replace('https://drive.google.com/file/d/1ofCriSzyvJxrIyNWgpyUnEsVcvKHoUbu/view?usp=sharing');
+    }
   },
 };
 </script>
+
+<style>
+</style>
