@@ -3,38 +3,38 @@ label: Project
 hide_body: false
 fields:
 - type: file
-    name: thumbnail
-    label: Thumbnail
-    description: This will only show up on the front page
+  name: thumbnail
+  label: Thumbnail
+  description: This will only show up on the front page
 - type: text
-    name: title
-    label: Title
-    config:
-    required: true
+  name: title
+  label: Title
+  config:
+  required: true
 - type: datetime
-    name: date
-    label: Date
-    config:
+  name: date
+  label: Date
+  config:
     required: true
     date_format: YYYY-MM-DD
     time_format: ''
     export_format: YYYY-MM-DD
     display_utc: true
-    default: now
-    hidden: true
+  default: now
+  hidden: true
 - type: tag_list
-    name: categories
-    label: Categories
+  name: categories
+  label: Categories
 - type: color
-    name: project_bg_color
-    config:
+  name: project_bg_color
+  config:
     color_format: Hex
-    label: Background color
+  label: Background color
 - type: color
-    name: project_fg_color
-    config:
+  name: project_fg_color
+  config:
     color_format: Hex
-    label: Foreground color
+  label: Foreground color
 pages:
 - projects/chelsea-landmark.md
 - projects/sunk.md

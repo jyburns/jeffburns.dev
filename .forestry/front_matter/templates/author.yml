@@ -3,18 +3,18 @@ label: Author
 hide_body: true
 fields:
 - type: text
-    label: Name
-    name: title
-    config:
+  label: Name
+  name: title
+  config:
     required: true
 - type: textarea
-    name: bio
-    label: Bio
-    config:
+  name: bio
+  label: Bio
+  config:
     required: true
 - type: file
-    name: avatar
-    label: Avatar
+  name: avatar
+  label: Avatar
 - type: text
-    name: twitter
-    label: Twitter
+  name: twitter
+  label: Twitter
