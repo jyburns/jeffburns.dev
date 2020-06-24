@@ -1,7 +1,10 @@
 <template>
     <div class="hero">
-        <h1 class="hero-title" v-html="settings.hero_title" />
-        <h2 class="hero-subtitle" v-html="settings.hero_subtitle" />
+        <h1 class="hero__title" v-html="theme.hero_title" />
+        <div class="hero__image-container">
+          <g-image class="hero__image" src="../../uploads/lily_pads.jpg" alt="hero image"/>
+        </div>
+        <h2 class="hero__subtitle" v-html="theme.hero_subtitle" />
     </div>
 </template>
 
@@ -9,7 +12,7 @@
 export default {
   data() {
     return {
-      settings: require("../../data/theme.json")
+      theme: require("../../data/theme.json")
     }
   }
 }
@@ -17,30 +20,47 @@ export default {
 
 <style>
 .hero {
-    text-align: center;
-    width: 480px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 4rem 0 8rem 0;
+  text-align: center;
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4rem 0 8rem 0;
 }
 
-.hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    padding: 0;
-    margin: 0 0 2rem 0;
+.hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0 0 2rem 0;
 }
-.hero-title p,
-.hero-subtitle p {
-    margin: 0;
-    padding: 0;
+
+.hero__image-container {
+  display: flex;
+  justify-content: center;
 }
-.hero-subtitle {
-    font-size: 1.15em;
-    font-weight: 400;
-    line-height: 1.68;
-    padding: 0;
-    margin: 0;
-    opacity: 0.6;
+
+.hero__image {
+  height: 18em;
+  width: 18em;
+  border: solid;
+  border-radius: 9em;
+  border-width: 0.25em;
+  border-color: lightgray;
+  overflow: hidden;
+}
+
+.hero__title p,
+.hero__subtitle p {
+  margin: 0;
+  padding: 0;
+}
+
+.hero__subtitle {
+  font-size: 1.15em;
+  font-weight: 400;
+  line-height: 1.68;
+  padding: 2em 0 0 0;
+  margin: 0;
+  opacity: 0.6;
 }
 </style>
