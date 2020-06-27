@@ -8,6 +8,17 @@
     </div>
 </template>
 
+<static-query>
+query {
+  theme(id: "primaryTheme") {
+    hero_title
+    hero_subtitle
+    hero_image
+  }
+}
+
+</static-query>
+
 <script>
 export default {
   data() {
@@ -24,7 +35,6 @@ export default {
   width: 480px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 4rem 0 8rem 0;
 }
 
 .hero__title {
@@ -40,10 +50,10 @@ export default {
 }
 
 .hero__image {
-  height: 18em;
-  width: 18em;
+  height: 14em;
+  width: 14em;
   border: solid;
-  border-radius: 9em;
+  border-radius: 50%;
   border-width: 0.25em;
   border-color: lightgray;
   overflow: hidden;
@@ -62,5 +72,12 @@ export default {
   padding: 2em 0 0 0;
   margin: 0;
   opacity: 0.6;
+}
+
+@media (min-width: 860px) {
+  .hero__image {
+    height: 18em;
+    width: 18em;
+  }
 }
 </style>

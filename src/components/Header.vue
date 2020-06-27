@@ -33,6 +33,7 @@ export default {
     position: relative;
     height: 6rem;
     z-index: 10;
+    backdrop-filter: blur(1em);
 }
 .header.sticky {
     position: fixed;

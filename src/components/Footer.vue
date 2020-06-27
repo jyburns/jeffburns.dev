@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
         <div class="container">
-            <span v-html="settings.footer" />
+            <span v-html="settings.footer + currentYear" />
         </div>
     </footer>
 </template>
@@ -10,8 +10,15 @@
 export default {
     data() {
         return {
-            settings: require("../../data/theme.json")
+            settings: require("../../data/theme.json"),
+            currentYear: new Date().getFullYear()
         }
+    },
+    created() {
+        this.interval = setInterval(() => this.currentYear = new Date().getFullYear(), 1000*60)
+    },
+    beforeDestroy() {
+        clearInterval(this.interval)
     }
 }
 </script>
