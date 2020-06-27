@@ -2,6 +2,13 @@
 label: Theme configuration
 hide_body: true
 fields:
+- name: id
+  type: text
+  config:
+    required: false
+  label: Id
+  description: used to query theme data in graphql
+  default: primaryTheme
 - type: text
   name: site_name
   label: Site name
