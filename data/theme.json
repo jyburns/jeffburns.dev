@@ -1,9 +1,10 @@
 {
-  "footer": "Copyright &copy; 2020",
+  "footer": "Copyright &copy; ",
   "dark_mode": false,
   "site_name": "Jeff Burns",
   "site_description": "Full Stack Developer",
   "hero_title": "Hello,",
-  "hero_subtitle": "I am a full stack developer and avid home cook. I am fulfilled by the creative process of making things.",
-  "hero_image": "/uploads/lily_pads.jpg"
+  "hero_subtitle": "I am a full-stack developer and avid home cook. I enjoy the creative process of building things.",
+  "hero_image": "/uploads/lily_pads.jpg",
+  "id": ""
 }
