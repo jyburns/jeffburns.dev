@@ -2,7 +2,7 @@
     <div class="hero">
         <h1 class="hero__title" v-html="theme.hero_title" />
         <div class="hero__image-container">
-          <g-image class="hero__image" src="../../uploads/lily_pads.jpg" alt="hero image"/>
+          <g-image class="hero__image" src="../../uploads/lily_pads.jpeg" alt="hero image"/>
         </div>
         <h2 class="hero__subtitle" v-html="theme.hero_subtitle" />
     </div>
