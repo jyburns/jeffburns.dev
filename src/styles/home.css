@@ -1,0 +1,29 @@
+figure {
+  margin: 1rem;
+  padding: 1rem 3rem;
+}
+
+blockquote {
+  margin: 1rem 0;
+}
+
+#slice {
+  display: inline-block;
+}
+
+#slice:hover {
+  animation-name: pizzaspin;
+  animation-duration: 750ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes pizzaspin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
