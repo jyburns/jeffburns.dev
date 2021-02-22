@@ -8,13 +8,53 @@ layout: project.html
 templateStylesheets:
   - /styles/boids.css
 templateScripts:
-  - /scripts/boids.js
+  - /scripts/boids/main.js
 tags: 
   - project
 emoji: 🐦
 emojiLabel: bird
 ---
 
-<p>the boids are coming the boids are coming!</p>
+<p>Practicing writing canvas animations</p>
 
-<canvas class="boid-canvas" id="boid_canvas_1"></canvas>
+<p>Resources:</p>
+<ul>
+  <li>
+    <a href="https://joshondesign.com/p/books/canvasdeepdive/title.html"
+       target="_blank"
+       title="HTML Canvas book"
+       rel="noopener">
+      HTML Canvas deep dive
+    </a>
+  </li>
+  <li>
+    <a href="https://www.red3d.com/cwr/boids/"
+       target="_blank"
+       title="Description of boids"
+       rel="noopener">
+      Boids
+    </a>
+  </li>
+</ul>
+
+<h2>Bouncing rectangle:</h2>
+<div class="canvas-container">
+  <canvas class="boid-canvas" id="canvas_1"></canvas>
+  <div class="canvas-button-container">
+    <button id="canvas_1_start">Start</button>
+    <button id="canvas_1_pause">Pause</button>
+    <button id="canvas_1_reset">Reset</button>
+    <button id="canvas_1_step">Step</button>
+  </div>
+</div>
+
+<h2>Snow:</h2>
+<div class="canvas-container">
+  <canvas class="boid-canvas" id="canvas_2"></canvas>
+  <div class="canvas-button-container">
+    <button id="canvas_2_start">Start</button>
+    <button id="canvas_2_pause">Pause</button>
+    <button id="canvas_2_reset">Reset</button>
+    <button id="canvas_2_step">Step</button>
+  </div>
+</div>
