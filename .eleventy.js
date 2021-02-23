@@ -1,6 +1,7 @@
 const svgContents = require("eleventy-plugin-svg-contents");
 
 module.exports = (eleventyConfig) => {
+  eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy('src/favicon.png');
   eleventyConfig.addPassthroughCopy('src/scripts');
   eleventyConfig.addPassthroughCopy('src/styles');
