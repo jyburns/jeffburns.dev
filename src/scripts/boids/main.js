@@ -1,6 +1,7 @@
 import { slidingRectangle } from "./slidingRectangle.js";
-import { snow } from "./snow.js";
+import { snow } from './snow.js';
 import { wanderingTriangle } from './wanderingTriangle.js';
+import { boids } from './boids.js';
 
 const animations = [];
 
@@ -16,6 +17,7 @@ window.addEventListener('load', () => {
   animations.push(slidingRectangle('canvas_1'));
   animations.push(snow('canvas_2'));
   animations.push(wanderingTriangle('canvas_3'));
+  animations.push(boids('canvas_4'));
 
   const main = document.getElementsByTagName('main')[0];
  

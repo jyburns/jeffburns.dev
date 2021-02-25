@@ -5,8 +5,6 @@ img.src = '../../assets/images/isoceles.png';
 
 const minImgDimension = Math.min(img.height, img.width);
 
-console.log('minImgDimension', minImgDimension);
-
 const defaultInitialParams = {
   speed: 3
 };

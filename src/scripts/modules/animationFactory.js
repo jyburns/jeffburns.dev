@@ -1,3 +1,7 @@
+const _deepCopy = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 const proto = {
   isRunning: false,
   canvasId: "",
@@ -20,7 +24,7 @@ const proto = {
   },
 
   setInitialConditions: function(params, state) {
-    this.initialConditions = { params: {...params}, state: {...state} };
+    this.initialConditions = { params: _deepCopy(params), state: _deepCopy(state) };
     this.params = params;
     this.state = state;
   },
@@ -51,8 +55,8 @@ const proto = {
 
   reset: function() {
     this.isRunning = false;
-    this.params = {...this.initialConditions.params};
-    this.state = {...this.initialConditions.state};
+    this.params = _deepCopy(this.initialConditions.params);
+    this.state = _deepCopy(this.initialConditions.state);
     this.ticks = 0;
     this.draw();
   },
