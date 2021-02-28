@@ -26,7 +26,7 @@ class Vector {
   }
 
   get theta() {
-    return this.#theta;
+    return normalizeTheta(this.#theta);
   }
 
   get dx() {
@@ -51,7 +51,11 @@ class Vector {
 
   static fromCoordinates = (x, y) => {
     let magnitude = magnitude2D(x, y);
-    let theta = Math.acos(x / magnitude);
+    let theta = Math.atan(y / x);
+
+    if (x < 0) {
+      theta += Math.PI;
+    }
 
     return new Vector(magnitude, theta);
   };
@@ -90,6 +94,23 @@ class Vector {
 
     return Vector.fromCoordinates(xSum, ySum);
   };
+
+  static dotProduct = (v1, v2) => {
+    return (v1.dx * v2.dx) + (v1.dy * v2.dy);
+  };
+
+  static thetaBetween = (v1, v2) => {
+    if (v1.magnitude * v2.magnitude === 0) {
+      return 0;
+    }
+
+    let directionOfRotation = 1;
+    if ((v1.theta - v2.theta > 0) && (Math.abs(v1.theta - v2.theta) < Math.PI)) {
+      directionOfRotation = -1;
+    }
+
+    return Math.acos(this.dotProduct(v1, v2) / (v1.magnitude * v2.magnitude)) * directionOfRotation;
+  };
 };
 
 const distance2D = (x1, y1, x2, y2) => {
@@ -100,9 +121,26 @@ const magnitude2D = (x, y) => {
   return Math.sqrt(x**2 + y**2);
 };
 
+const normalizeTheta = (theta) => {
+  if (theta < 0) {
+    return normalizeTheta(theta + (Math.PI * 2));
+  }
+
+  if (theta > (2 * Math.PI)) {
+    return normalizeTheta(theta - (Math.PI * 2));
+  }
+
+  return theta;
+}
+
+const radiansToDegrees = (radians) => {
+  return radians * (180 / Math.PI);
+};
+
 export {
   Vector,
 
   distance2D,
-  magnitude2D
+  magnitude2D,
+  radiansToDegrees
 };

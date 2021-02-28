@@ -1,5 +1,5 @@
 import animationFactory from '../modules/animationFactory.js';
-import { Vector, distance2D } from '../modules/quickMaths.js';
+import { Vector, distance2D, radiansToDegrees } from '../modules/quickMaths.js';
 
 let img = new Image();
 img.src = '../../assets/images/isoceles.png';
@@ -7,54 +7,37 @@ img.src = '../../assets/images/isoceles.png';
 const minImgDimension = Math.min(img.height, img.width);
 
 const defaultInitialParams = {
+  boidCount: 20,
   speed: 3,
-  neighborhoodRadius: 100,
-  neighborhoodFOV: Math.PI,
-  separationWeight: 6,
+  neighborhoodRadius: 150,
+  neighborhoodFOV: (5/4) * Math.PI,
+  separationWeight: 3,
   alignmentWeight: 0.05,
   cohesionWeight: 1,
   pathVariability: Math.PI / 32
 };
 
+const _generateBoids = (count) => {
+  let boids = [];
+
+  for(let i = 0; i < count; i++) {
+    boids.push(_generateBoid());
+  }
+
+  return boids;
+};
+
+const _generateBoid = () => {
+  return {
+    x: Math.random() * 500,
+    y: Math.random() * 500,
+    heading: Math.random() * (2 * Math.PI),
+    turnDirection: Math.random() > 0.5 ? 1 : -1
+  }
+};
+
 const defaultInitialState = {
-  particles: [
-    {
-      x: 150,
-      y: 150,
-      heading: 0, //radians
-      turnDirection: -1,  // -1 is clockwise, 1 is counterclockwise
-    },
-    {
-      x: 100,
-      y: 100,
-      heading: -(1/8) * Math.PI,
-      turnDirection: 1,
-    },
-    {
-      x: 175,
-      y: 200,
-      heading: -(1/8) * Math.PI,
-      turnDirection: -1,
-    },
-    {
-      x: 50,
-      y: 275,
-      heading: -1/4,
-      turnDirection: -1,
-    },
-    {
-      x: 50,
-      y: 210,
-      heading: -(1/8) * Math.PI,
-      turnDirection: -1,
-    },
-    {
-      x: 175,
-      y: 300,
-      heading: -(1/4) * Math.PI,
-      turnDirection: -1,
-    }
-  ]
+  particles: _generateBoids(defaultInitialParams.boidCount)
 };
 
 const _getNeighborsForParticle = (p1, particles, nR, nFOV) => {
@@ -78,11 +61,12 @@ const _getNeighborsForParticle = (p1, particles, nR, nFOV) => {
       return accumulator;
     }
 
-    // calculate theta to neighbor
-    candidateNeighbor.dTheta = Math.acos((p2.x - p1.x) / candidateNeighbor.distance);
+    // calculate vector to neighbor
+    let vectorToNeighbor = Vector.fromCoordinates((p2.x - p1.x), (p2.y - p1.y));
+    candidateNeighbor.dTheta = Vector.thetaBetween(new Vector(1, p1.heading), vectorToNeighbor);
 
     // if dTheta falls within the boid's FOV & radius it is neigbor
-    if (Math.abs(p1.heading - candidateNeighbor.dTheta) < (nFOV / 2)) {
+    if (Math.abs(candidateNeighbor.dTheta) <= (nFOV / 2)) {
       candidateNeighbor.isNeighbor = true;
       accumulator.push(candidateNeighbor);
     }
@@ -99,7 +83,7 @@ const _calculateIndividualHeadingForce = (particle, ticks, pathVariability) => {
     let turn = Math.random() * pathVariability;
 
     // ~2/3 likelihood that the boid will continue turning in the same diretion
-    let turnDirection = (Math.random() > 0.33) ? particle.turnDirection : (-1 * particle.turnDirection);
+    let turnDirection = (Math.random() > 0.5) ? particle.turnDirection : (-1 * particle.turnDirection);
     individualHeadingVector.setTheta(individualHeadingVector.theta + (turn * turnDirection));
   }
 
@@ -143,7 +127,12 @@ const boids = (canvasId, initialParams = defaultInitialParams, initialState = de
       let neighbors = _getNeighborsForParticle(particle, anim.state.particles, anim.params.neighborhoodRadius, anim.params.neighborhoodFOV);
       
       let separationVectorsForParticle = neighbors.map(n => {
-        return new Vector((1 / n.distance), (n.dTheta + Math.PI));
+        // vector from neightbor to particle
+        let separationVector = Vector.fromCoordinates(particle.x - n.particle.x, particle.y - n.particle.y);
+        // scale to 1/distance
+        separationVector.scale(1 / (separationVector.magnitude * n.distance));
+
+        return separationVector
       });
 
       let neighborHeadingSum = neighbors.reduce((sum, n) => {
@@ -154,10 +143,11 @@ const boids = (canvasId, initialParams = defaultInitialParams, initialState = de
       let avgNeighborHeading = neighbors.length > 0 ? neighborHeadingSum / neighbors.length : undefined;
       let individualHeadingVector = _calculateIndividualHeadingForce(particle, anim.ticks, anim.params.pathVariability);
       let cohesionVector = _calculateCohesionForce(particle, neighbors);
-      let componentVectors = [individualHeadingVector];
 
       netSeparationVector.scale(anim.params.separationWeight);
       individualHeadingVector.scale(anim.params.speed);
+
+      let componentVectors = [individualHeadingVector];
 
       if (neighbors.length > 0) {
         cohesionVector.scale(anim.params.cohesionWeight / anim.params.neighborhoodRadius);
