@@ -34,7 +34,9 @@
         {% for item in mainNavigationList %}
         <li class="header__navigation-list-item">
           <a href="{{item.path}}">
-            {{item.title}}
+            <div class="header__navigation-list-item-box">
+              {{item.title}}
+            </div>
           </a>
         </li>
         {% endfor %}
@@ -54,7 +56,7 @@
       <li class="footer__link">
         <a href="https://www.github.com/jyburns"
            target="_blank"
-           title="My Github Profile" 
+           title="My Github Profile"
            rel="noopener">
           Github
         </a>

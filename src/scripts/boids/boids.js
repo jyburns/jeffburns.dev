@@ -83,7 +83,7 @@ const _calculateIndividualHeadingForce = (particle, ticks, pathVariability) => {
     let turn = Math.random() * pathVariability;
 
     // ~2/3 likelihood that the boid will continue turning in the same diretion
-    let turnDirection = (Math.random() > 0.5) ? particle.turnDirection : (-1 * particle.turnDirection);
+    let turnDirection = (Math.random() > 0.33) ? particle.turnDirection : (-1 * particle.turnDirection);
     individualHeadingVector.setTheta(individualHeadingVector.theta + (turn * turnDirection));
   }
 
