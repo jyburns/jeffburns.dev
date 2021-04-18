@@ -1,0 +1,29 @@
+---
+title: Projects
+layout: base.html
+description: Coming soon - Some Projects of Jeff Burns.
+templateStylesheets:
+  - /styles/projects.css
+---
+
+<h2>Projects:</h2>
+
+<section class="projects-grid">
+  {% for project in collections.project | reverse %}
+  <div class="project">
+    <h3 class="project__header">
+      <a class="project__header-link" href="{{project.data.path}}">
+        <div class="project__emoji project__emoji--{{project.data.path}}" role="img" aria-label="{{project.data.emojiLabel}}">
+          {{project.data.emoji}}
+        </div>
+      
+        <span class="project__title" href="{{project.data.path}}">
+          {{project.data.title}}
+        </span>
+      </a>
+    </h3> 
+    <p class="project__date">{{project.data.date | longDate}}</p>
+    <p class="project__description" aria-label="doc-subtitle">{{project.data.description}}</p>
+  </div>
+  {% endfor %}
+</section>

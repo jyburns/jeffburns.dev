@@ -1,0 +1,19 @@
+---
+title: Blog
+layout: base.html
+description: Personal blog of Jeff Burns.
+---
+
+<h2>Posts:</h2>
+
+{% for post in collections.post %}
+<h3>
+  <a href="{{post.data.path}}">
+    <span role="img" aria-label="{{post.data.emojiLabel}}">
+      {{post.data.emoji}}
+    </span>
+    {{post.data.title}} - {{post.data.date | longDate}}
+  </a>
+</h3> 
+<p aria-label="doc-subtitle">{{post.data.description}}</p>
+{% endfor %}

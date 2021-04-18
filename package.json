@@ -1,15 +1,27 @@
 {
   "name": "jeffburns.dev",
-  "private": true,
-  "scripts": {
-    "build": "gridsome build",
-    "develop": "gridsome develop",
-    "explore": "gridsome explore"
-  },
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "index.js",
   "dependencies": {
-    "@gridsome/remark-prismjs": "0.3.0",
-    "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.5.0",
-    "gridsome": "^0.7.13"
-  }
+    "@11ty/eleventy": "^0.12.1",
+    "eleventy-plugin-svg-contents": "^0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "develop": "npx @11ty/eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyburns/jeffburns.dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyburns/jeffburns.dev/issues"
+  },
+  "homepage": "https://github.com/jyburns/jeffburns.dev#readme"
 }

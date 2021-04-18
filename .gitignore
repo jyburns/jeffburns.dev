@@ -1,4 +1,6 @@
-.cache
-dist
+_site
 node_modules
-src/.temp
+
+.vscode
+
+**/.DS_Store

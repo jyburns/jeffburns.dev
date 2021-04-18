@@ -1,0 +1,17 @@
+.canvas-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.boid-canvas {
+  border: 0.2rem solid rgba(var(--primary-text-color));
+  height: 40rem;
+  margin: 0 auto;
+}
+
+.canvas-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}

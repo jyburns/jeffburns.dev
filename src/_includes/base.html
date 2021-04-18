@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{title}} | JeffBurns.dev</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  {% if description %}
+  <meta name="description" content="{{description}}"/>
+  {% endif %}
+  
+  {% for stylesheet in templateStylesheets %}
+  <link rel="stylesheet" href="{{stylesheet}}">
+  {% endfor %}
+
+  {% for script in templateScripts %}
+  <script type="module" src="{{script}}"></script>
+  {% endfor %}
+  
+  {% if emoji %}
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{emoji}}</text></svg>">
+  {% else %}
+  <link rel="icon" href="/favicon.png" type="image/png">
+  {% endif %}
+</head>
+<body>
+  <header>
+    <h1 class="header__logo"><a href="/">&#60;JYB&#62;</a></h1>
+    <nav class="header__navigation">
+      <ul class="header__navigation-list">
+        {% for item in mainNavigationList %}
+        <li class="header__navigation-list-item">
+          <a href="{{item.path}}">
+            <div class="header__navigation-list-item-box">
+              {{item.title}}
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+  {% block content %}
+    {{ content | safe }}
+  {% endblock %}
+  </main>
+  <footer>
+    <span class="footer__greeting">
+      <span role="img" aria-label="Waving hello">👋</span> I am the footer. Thanks for reading!
+    </span>
+    <ul class="footer__links">
+      <li class="footer__link">
+        <a href="https://www.github.com/jyburns"
+           target="_blank"
+           title="My Github Profile"
+           rel="noopener">
+          Github
+        </a>
+      </li>
+      <li class="footer__link">
+        <a href="https://www.linkedin.com/in/jeffreyyouenn"
+           target="_blank"
+           title="My LinkedIn Profile"
+           rel="noopener">
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+---
+layout: base.html
+---
+
+<h2>{{title}}</h2>
+<p aria-label="doc-subtitle">{{description}}</p>
+<p>by {{author}} | {{date | longDate}}</p>
+<hr>
+
+{% block content %}
+  {{ content | safe }}
+{% endblock %}

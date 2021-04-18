@@ -1,0 +1,76 @@
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3.6rem;
+  justify-items: center;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  text-align: center;
+}
+
+.project__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.project__header-link {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.project__emoji {
+  border: 0.2rem solid rgba(var(--primary-text-color));
+  border-radius: 50%;
+  font-size: 5rem;
+  height: 8rem;
+  width: 8rem;
+}
+
+.project__title {
+  font-size: 1.8rem;
+  text-decoration: underline;
+}
+
+.project__date {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.project__description {
+  font-size: 1.4rem;
+}
+
+@media only screen and (min-width: 426px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Project modifiers - .project__emoji--{{project.data.path}} */
+
+.project__emoji--js-puzzles {
+  background-color: #fff5a0;
+}
+
+.project__emoji--cuchumbo {
+  background-color: #b19cd9;
+}
+
+.project__emoji--boids {
+  background-color: #d3d3d3;
+}

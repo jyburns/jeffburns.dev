@@ -1,2 +1,2 @@
 # jeffburns.dev
-My personal website built with Gridsome, Forestry.io, and Netlify
+My personal website built with 11ty and hosted on Netlify.
