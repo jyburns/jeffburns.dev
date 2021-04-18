@@ -9,7 +9,7 @@ templateStylesheets:
 <h2>Projects:</h2>
 
 <section class="projects-grid">
-  {% for project in collections.project %}
+  {% for project in collections.project | reverse %}
   <div class="project">
     <h3 class="project__header">
       <a class="project__header-link" href="{{project.data.path}}">
