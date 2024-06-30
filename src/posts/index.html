@@ -6,7 +6,7 @@ description: Personal blog of Jeff Burns.
 
 <h2>Posts:</h2>
 
-{% for post in collections.post %}
+{% for post in collections.post | reverse %}
 <h3>
   <a href="{{post.data.path}}">
     <span role="img" aria-label="{{post.data.emojiLabel}}">

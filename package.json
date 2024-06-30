@@ -4,10 +4,9 @@
   "description": "My personal website.",
   "main": "index.js",
   "dependencies": {
-    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy": "3.0.0-alpha.14",
     "eleventy-plugin-svg-contents": "^0.7.0"
   },
-  "devDependencies": {},
   "scripts": {
     "build": "npx @11ty/eleventy",
     "develop": "npx @11ty/eleventy --serve",
